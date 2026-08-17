@@ -100,15 +100,26 @@
                     <span id="listener-count" class="listener-text">128 listening</span>
                 </div>
 
-                <!-- Top Right: YouTube Music Glassmorphism Button -->
-                <a href="https://music.youtube.com/playlist?list=PLMQF3xXq-vkU&si=-tM8YgIAf2SYpmG2" id="yt-music-btn" class="glass-pill yt-music-link" target="_blank" rel="noopener noreferrer" title="Open Playlist in YouTube Music">
-                    <svg class="yt-music-icon" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="12" fill="#FF0000"/>
-                        <circle cx="12" cy="12" r="8" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
-                        <polygon points="10,8.5 15.5,12 10,15.5" fill="#FFFFFF"/>
-                    </svg>
-                    <span class="yt-music-label">YouTube Music</span>
-                </a>
+                <!-- Top Right: Actions Group (YouTube Music & Support Button) -->
+                <div class="top-right-actions">
+                    <!-- YouTube Music Glassmorphism Button -->
+                    <a href="https://music.youtube.com/playlist?list=PLMQF3xXq-vkU&si=-tM8YgIAf2SYpmG2" id="yt-music-btn" class="glass-pill yt-music-link" target="_blank" rel="noopener noreferrer" title="Open Playlist in YouTube Music">
+                        <svg class="yt-music-icon" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="12" fill="#FF0000"/>
+                            <circle cx="12" cy="12" r="8" fill="none" stroke="#FFFFFF" stroke-width="1.6"/>
+                            <polygon points="10,8.5 15.5,12 10,15.5" fill="#FFFFFF"/>
+                        </svg>
+                        <span class="yt-music-label">YouTube Music</span>
+                    </a>
+
+                    <!-- Support / Buy Me a Chaya Glassmorphism Button -->
+                    <button id="support-btn" class="glass-pill support-btn" title="Buy Me a Chaya" aria-label="Support">
+                        <svg class="support-heart-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="support-btn-label">Buy Me a Chaya</span>
+                    </button>
+                </div>
             </header>
 
             <!-- Center Atmospheric Tagline -->
@@ -253,6 +264,41 @@
 
         </div>
         <p class="contact-footer">contact: <a href="mailto:saranvarma67@gmail.com" class="contact-link">saranvarma67@gmail.com</a></p>
+    </div>
+
+    <!-- Support / Buy Me a Chaya Modal Overlay -->
+    <div id="support-modal-overlay" class="support-modal-overlay" aria-hidden="true">
+        <div class="support-modal-backdrop" id="support-modal-backdrop"></div>
+        <div class="support-modal-card glass-modal" role="dialog" aria-modal="true" aria-labelledby="support-modal-title">
+            <button class="modal-close-btn" id="support-modal-close" aria-label="Close Support Modal" title="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-header">
+                <div class="modal-badge">
+                    <span class="badge-icon">☕</span>
+                    <span class="badge-text">സരിത ടീ സ്റ്റാൾ</span>
+                </div>
+                <h3 id="support-modal-title" class="modal-title">Enjoying the songs and the vibe? ❤️</h3>
+                <p class="modal-subtitle">
+                    If this little tea stall brought back a memory or two, you can buy me a virtual chaya.
+                </p>
+            </div>
+
+            <div class="modal-qr-section">
+                <div class="qr-frame">
+                    <img src="assets/images/qrcode.jpeg" alt="Support QR Code" class="support-qr-img" id="support-qr-img">
+                </div>
+                <p class="qr-scan-hint">Scan with GPay, PhonePe, Paytm, or any UPI app</p>
+            </div>
+
+            <div class="modal-footer-note">
+                <p>No subscriptions. No fancy servers. Just a QR code and good old-fashioned support. 😄</p>
+            </div>
+        </div>
     </div>
 
     <!-- YouTube IFrame API Script -->

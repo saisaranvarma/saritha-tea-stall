@@ -166,6 +166,26 @@ const sidebarToggleBtn = document.getElementById("sidebar-toggle-btn");
 const sidebarCloseBtn = document.getElementById("sidebar-close-btn");
 const sidebarPlaylist = document.getElementById("sidebar-playlist");
 
+// Support Modal DOM Elements
+const supportBtn = document.getElementById("support-btn");
+const supportModalOverlay = document.getElementById("support-modal-overlay");
+const supportModalClose = document.getElementById("support-modal-close");
+const supportModalBackdrop = document.getElementById("support-modal-backdrop");
+
+function openSupportModal() {
+    if (supportModalOverlay) {
+        supportModalOverlay.classList.add("active");
+        supportModalOverlay.setAttribute("aria-hidden", "false");
+    }
+}
+
+function closeSupportModal() {
+    if (supportModalOverlay) {
+        supportModalOverlay.classList.remove("active");
+        supportModalOverlay.setAttribute("aria-hidden", "true");
+    }
+}
+
 // --------------------------------------------------------------------------
 // 4. INITIALIZATION & SETUP
 // --------------------------------------------------------------------------
@@ -574,8 +594,25 @@ function setupEventListeners() {
         changeRainTrack(e.target.value);
     });
 
+    // Support Modal Open & Close Listeners
+    if (supportBtn) {
+        supportBtn.addEventListener("click", openSupportModal);
+    }
+    if (supportModalClose) {
+        supportModalClose.addEventListener("click", closeSupportModal);
+    }
+    if (supportModalBackdrop) {
+        supportModalBackdrop.addEventListener("click", closeSupportModal);
+    }
+
     // Global Keyboard Shortcuts
     document.addEventListener("keydown", (e) => {
+        // Close modal on Escape
+        if (e.key === "Escape" && supportModalOverlay && supportModalOverlay.classList.contains("active")) {
+            closeSupportModal();
+            return;
+        }
+
         if (e.code === "Space" && e.target.tagName !== "INPUT" && e.target.tagName !== "SELECT") {
             e.preventDefault();
             togglePlayPause();
