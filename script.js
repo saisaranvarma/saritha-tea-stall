@@ -290,7 +290,7 @@ function onPlayerError(errorEvent) {
 function handleSongEnded() {
     const now = Date.now();
     if (now - lastSongChangeTimestamp < 2000) return;
-    lastSongChangeTimestamp = now;
+    // Let playNextSong update the timestamp, otherwise it returns early
     playNextSong();
 }
 
