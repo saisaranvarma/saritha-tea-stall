@@ -78,6 +78,42 @@ const songs = [
         artwork: "assets/images/poster7.jpg",
         youtubeId: "8AR7J1f4sL0",
         youtubeChannel: "Music House (MH)"
+    },
+    {
+        title: "വികാര നൗകയുമായി",
+        singer: "K.J Yesudas",
+        movie: "അമരം",
+        year: 1991,
+        artwork: "assets/images/poster8.jpg",
+        youtubeId: "qboVkft8TtI",
+        youtubeChannel: "Malayalam Cassettes"
+    },
+    {
+        title: "ആരോ വിരൽ നീട്ടി",
+        singer: "K.J Yesudas",
+        movie: "പ്രണയവർണ്ണങ്ങൾ",
+        year: 1998,
+        artwork: "assets/images/poster9.jpg",
+        youtubeId: "riI3FqDM_0g",
+        youtubeChannel: "Cinema Paattu"
+    },
+    {
+        title: "ആലില താലിയുമായ്",
+        singer: "P. Jayachandran",
+        movie: "Mizhirandilum",
+        year: 2003,
+        artwork: "assets/images/poster10.jpg",
+        youtubeId: "qMyXYzQPHY4",
+        youtubeChannel: "Music Zone"
+    },
+    {
+        title: "ഏതോ വാർ‍മുകിലിൻ",
+        singer: "K.S Chithra",
+        movie: "Pookkaalam Varavaayi",
+        year: 1991,
+        artwork: "assets/images/poster11.jpg",
+        youtubeId: "vxoHHR_UPd8",
+        youtubeChannel: "Evergreen film songs"
     }
 ];
 
