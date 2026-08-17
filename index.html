@@ -28,9 +28,12 @@
 </head>
 <body>
 
-    <!-- Full Screen Vintage Tea Stall Background -->
+    <!-- Full Screen Vintage Tea Stall Background (Responsive for Desktop & Mobile) -->
     <div class="background-container" id="bg-container">
-        <img src="assets/images/background.png" alt="Saritha Tea Stall Kerala" class="bg-image" id="bg-img">
+        <picture class="bg-picture">
+            <source media="(max-width: 768px)" srcset="assets/images/mobilebg.png">
+            <img src="assets/images/background.png" alt="Saritha Tea Stall Kerala" class="bg-image" id="bg-img">
+        </picture>
         <div class="vintage-vignette"></div>
     </div>
 
