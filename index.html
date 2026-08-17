@@ -287,32 +287,22 @@
                 <p class="modal-subtitle">
                     Enjoying the songs and the nostalgia? If Saritha Tea Stall brought back a memory or two, you can buy me a virtual chaya.
                 </p>
-                <p class="modal-tagline">
-                    One tap if you're on your phone. QR code if you're feeling old-school. ☕😄
-                </p>
             </div>
 
             <!-- Two Payment Methods (Side by Side on Desktop, Stacked on Mobile) -->
             <div class="modal-payment-container">
                 
-                <!-- Option 1: Direct One-Tap UPI Button -->
+                <!-- Option 1: Copy UPI ID -->
                 <div class="payment-option-col upi-direct-col">
                     <div class="payment-col-header">
-                        <span class="payment-opt-badge">📱 Direct One-Tap</span>
-                        <h4 class="payment-col-title">Pay via UPI App</h4>
+                        <span class="payment-opt-badge">📋 Copy ID</span>
+                        <h4 class="payment-col-title">Pay via UPI ID</h4>
                     </div>
-                    
-                    <a href="upi://pay?pa=saranvarma67@okhdfcbank&pn=Saritha%20Tea%20Stall&cu=INR" class="btn-upi-pay" id="btn-upi-pay" title="Open UPI App (GPay, PhonePe, Paytm)">
-                        <span class="btn-upi-icon">☕</span>
-                        <span class="btn-upi-text">
-                            <span class="btn-upi-main">Buy Me a Chaya</span>
-                            <span class="btn-upi-sub">Open in GPay, PhonePe, Paytm, etc.</span>
-                        </span>
-                    </a>
+
+                    <p class="qr-scan-hint" style="margin: 8px 0;">Copy and paste in any UPI app</p>
 
                     <!-- Copy UPI ID Pill -->
                     <div class="upi-id-copy-row">
-                        <span class="upi-id-label">UPI ID:</span>
                         <button type="button" class="upi-id-copy-pill" id="copy-upi-btn" title="Click to copy UPI ID">
                             <span id="upi-id-text">saranvarma67@okhdfcbank</span>
                             <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
