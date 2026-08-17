@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startClock();
 
     // Start subtle listener count fluctuation
-    startListenerSimulation();
+    // startListenerSimulation();
 
     // Setup Event Listeners
     setupEventListeners();
@@ -667,14 +667,14 @@ function startClock() {
 // --------------------------------------------------------------------------
 // 12. LISTENER COUNT ANIMATION
 // --------------------------------------------------------------------------
-function startListenerSimulation() {
-    let baseCount = 128;
-    setInterval(() => {
-        const shift = Math.floor(Math.random() * 5) - 2;
-        baseCount = Math.max(115, Math.min(150, baseCount + shift));
-        listenerCount.textContent = `${baseCount} listening`;
-    }, 12000);
-}
+// function startListenerSimulation() {
+//     let baseCount = 128;
+//     setInterval(() => {
+//         const shift = Math.floor(Math.random() * 5) - 2;
+//         baseCount = Math.max(115, Math.min(150, baseCount + shift));
+//         listenerCount.textContent = `${baseCount} listening`;
+//     }, 12000);
+// }
 
 function getVisitorId() {
     let visitorId = localStorage.getItem('visitor_id');
@@ -687,29 +687,33 @@ function getVisitorId() {
     return visitorId;
 }
 
-
 async function sendHeartbeat() {
     try {
         const visitorId = getVisitorId();
 
-        const response = await fetch('/.netlify/functions/heartbeat', {
-            method: 'POST',
+        const response = await fetch(
+            '/.netlify/functions/heartbeat',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    visitorId: visitorId
+                })
+            }
+        );
 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-
-            body: JSON.stringify({
-                visitorId: visitorId
-            })
-        });
+        if (!response.ok) {
+            throw new Error(`Heartbeat failed: ${response.status}`);
+        }
 
         const data = await response.json();
 
         console.log('Active listeners:', data.activeListeners);
 
-        // Update your existing listener text
-        const countElement = document.getElementById('listener-count');
+        const countElement =
+            document.getElementById('listener-count');
 
         if (countElement) {
             countElement.textContent =
@@ -721,50 +725,8 @@ async function sendHeartbeat() {
     }
 }
 
-
-async function sendHeartbeat() {
-  try {
-    const visitorId = getVisitorId();
-
-    const response = await fetch(
-      '/.netlify/functions/heartbeat',
-      {
-        method: 'POST',
-
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify({
-          visitorId: visitorId
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    console.log(
-      'Active listeners:',
-      data.activeListeners
-    );
-
-    // Update your UI here
-    const countElement =
-      document.getElementById('listener-count');
-
-    if (countElement) {
-      countElement.textContent =
-        data.activeListeners;
-    }
-
-  } catch (error) {
-    console.error(
-      'Heartbeat failed:',
-      error
-    );
-  }
-}
-
+// Send immediately when the site opens
 sendHeartbeat();
 
+// Then every 30 seconds
 setInterval(sendHeartbeat, 30000);
