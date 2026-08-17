@@ -677,18 +677,48 @@ function startListenerSimulation() {
 }
 
 function getVisitorId() {
-  let visitorId = localStorage.getItem('visitor_id');
+    let visitorId = localStorage.getItem('visitor_id');
 
-  if (!visitorId) {
-    visitorId = crypto.randomUUID();
+    if (!visitorId) {
+        visitorId = crypto.randomUUID();
+        localStorage.setItem('visitor_id', visitorId);
+    }
 
-    localStorage.setItem(
-      'visitor_id',
-      visitorId
-    );
-  }
+    return visitorId;
+}
 
-  return visitorId;
+
+async function sendHeartbeat() {
+    try {
+        const visitorId = getVisitorId();
+
+        const response = await fetch('/.netlify/functions/heartbeat', {
+            method: 'POST',
+
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                visitorId: visitorId
+            })
+        });
+
+        const data = await response.json();
+
+        console.log('Active listeners:', data.activeListeners);
+
+        // Update your existing listener text
+        const countElement = document.getElementById('listener-count');
+
+        if (countElement) {
+            countElement.textContent =
+                `${data.activeListeners} listening`;
+        }
+
+    } catch (error) {
+        console.error('Heartbeat failed:', error);
+    }
 }
 
 
