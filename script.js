@@ -675,3 +675,66 @@ function startListenerSimulation() {
         listenerCount.textContent = `${baseCount} listening`;
     }, 12000);
 }
+
+function getVisitorId() {
+  let visitorId = localStorage.getItem('visitor_id');
+
+  if (!visitorId) {
+    visitorId = crypto.randomUUID();
+
+    localStorage.setItem(
+      'visitor_id',
+      visitorId
+    );
+  }
+
+  return visitorId;
+}
+
+
+async function sendHeartbeat() {
+  try {
+    const visitorId = getVisitorId();
+
+    const response = await fetch(
+      '/.netlify/functions/heartbeat',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          visitorId: visitorId
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(
+      'Active listeners:',
+      data.activeListeners
+    );
+
+    // Update your UI here
+    const countElement =
+      document.getElementById('listener-count');
+
+    if (countElement) {
+      countElement.textContent =
+        data.activeListeners;
+    }
+
+  } catch (error) {
+    console.error(
+      'Heartbeat failed:',
+      error
+    );
+  }
+}
+
+sendHeartbeat();
+
+setInterval(sendHeartbeat, 30000);
