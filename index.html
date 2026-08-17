@@ -277,26 +277,77 @@
                 </svg>
             </button>
 
+            <!-- Modal Header -->
             <div class="modal-header">
                 <div class="modal-badge">
                     <span class="badge-icon">☕</span>
                     <span class="badge-text">സരിത ടീ സ്റ്റാൾ</span>
                 </div>
-                <h3 id="support-modal-title" class="modal-title">Enjoying the songs and the vibe? ❤️</h3>
+                <h3 id="support-modal-title" class="modal-title">ഒരു ചായ വാങ്ങി തരാമോ? ☕❤️</h3>
                 <p class="modal-subtitle">
-                    If this little tea stall brought back a memory or two, you can buy me a virtual chaya.
+                    Enjoying the songs and the nostalgia? If Saritha Tea Stall brought back a memory or two, you can buy me a virtual chaya.
+                </p>
+                <p class="modal-tagline">
+                    One tap if you're on your phone. QR code if you're feeling old-school. ☕😄
                 </p>
             </div>
 
-            <div class="modal-qr-section">
-                <div class="qr-frame">
-                    <img src="assets/images/qrcode.jpeg" alt="Support QR Code" class="support-qr-img" id="support-qr-img">
+            <!-- Two Payment Methods (Side by Side on Desktop, Stacked on Mobile) -->
+            <div class="modal-payment-container">
+                
+                <!-- Option 1: Direct One-Tap UPI Button -->
+                <div class="payment-option-col upi-direct-col">
+                    <div class="payment-col-header">
+                        <span class="payment-opt-badge">📱 Direct One-Tap</span>
+                        <h4 class="payment-col-title">Pay via UPI App</h4>
+                    </div>
+                    
+                    <a href="upi://pay?pa=saranvarma67@okhdfcbank&pn=Saritha%20Tea%20Stall&cu=INR" class="btn-upi-pay" id="btn-upi-pay" title="Open UPI App (GPay, PhonePe, Paytm)">
+                        <span class="btn-upi-icon">☕</span>
+                        <span class="btn-upi-text">
+                            <span class="btn-upi-main">Buy Me a Chaya</span>
+                            <span class="btn-upi-sub">Open in GPay, PhonePe, Paytm, etc.</span>
+                        </span>
+                    </a>
+
+                    <!-- Copy UPI ID Pill -->
+                    <div class="upi-id-copy-row">
+                        <span class="upi-id-label">UPI ID:</span>
+                        <button type="button" class="upi-id-copy-pill" id="copy-upi-btn" title="Click to copy UPI ID">
+                            <span id="upi-id-text">saranvarma67@okhdfcbank</span>
+                            <svg class="copy-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <p class="qr-scan-hint">Scan with GPay, PhonePe, Paytm, or any UPI app</p>
+
+                <!-- Subtle Divider -->
+                <div class="payment-divider">
+                    <span class="divider-line"></span>
+                    <span class="divider-text">OR</span>
+                    <span class="divider-line"></span>
+                </div>
+
+                <!-- Option 2: QR Code Scan -->
+                <div class="payment-option-col qr-scan-col">
+                    <div class="payment-col-header">
+                        <span class="payment-opt-badge">📷 Scan QR</span>
+                        <h4 class="payment-col-title">Scan & Support</h4>
+                    </div>
+
+                    <div class="qr-frame">
+                        <img src="assets/images/qrcode.jpeg" alt="Support UPI QR Code" class="support-qr-img" id="support-qr-img">
+                    </div>
+                    <p class="qr-scan-hint">Scan with any UPI scanner</p>
+                </div>
+
             </div>
 
+            <!-- Footer Note -->
             <div class="modal-footer-note">
-                <p>No subscriptions. No fancy servers. Just a QR code and good old-fashioned support. 😄</p>
+                <p>No subscriptions. No fancy servers. Just good music and good old-fashioned support. ❤️</p>
             </div>
         </div>
     </div>

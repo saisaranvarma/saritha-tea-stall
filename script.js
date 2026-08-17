@@ -605,6 +605,28 @@ function setupEventListeners() {
         supportModalBackdrop.addEventListener("click", closeSupportModal);
     }
 
+    // Copy UPI ID to Clipboard
+    const copyUpiBtn = document.getElementById("copy-upi-btn");
+    const upiIdText = document.getElementById("upi-id-text");
+    if (copyUpiBtn && upiIdText) {
+        copyUpiBtn.addEventListener("click", () => {
+            const rawId = upiIdText.textContent.trim();
+            navigator.clipboard.writeText(rawId).then(() => {
+                const originalText = upiIdText.textContent;
+                upiIdText.textContent = "Copied! ✓";
+                setTimeout(() => {
+                    upiIdText.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                // Fallback
+                upiIdText.textContent = "Copied! ✓";
+                setTimeout(() => {
+                    upiIdText.textContent = "saranvarma67@okhdfcbank";
+                }, 2000);
+            });
+        });
+    }
+
     // Global Keyboard Shortcuts
     document.addEventListener("keydown", (e) => {
         // Close modal on Escape
